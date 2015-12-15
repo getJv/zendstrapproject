@@ -46,13 +46,10 @@ class Admin_AuthController extends Zend_Controller_Action {
                 //Efetua o login
                 $auth = Zend_Auth::getInstance();
 
-                try {
-                    $result = $auth->authenticate($authAdapter);
-                } catch (Exception $exc) {
-
-                    echo $exc->getTraceAsString();
-                    Jdebug(__LINE__);
-                }
+              
+                $result = $auth->authenticate($authAdapter);
+                     
+              
 
 
 
@@ -64,7 +61,7 @@ class Admin_AuthController extends Zend_Controller_Action {
                     $storage = $auth->getStorage();
                     $storage->write($info);
                     //Redireciona para o Controller protegido
-                    return $this->_helper->redirector->goToRoute(array('controller' => 'noticias'), null, true);
+                    return $this->_helper->redirector->goToRoute(array('controller' => 'index'), null, true);
                 } else {
                     //Dados inválidos
                     //$this->_helper->FlashMessenger('Usuário ou senha inválidos!');
