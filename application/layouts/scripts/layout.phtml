@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <?php
+        $versao = "1.0";
+
+#import css principal 
+        $this->headLink()->appendStylesheet($this->baseUrl() . '/css/css.css');
+
+
+# Imports do bootStrap 3.3.5
+        $this->headLink()->prependStylesheet($this->baseUrl() . '/bootstrap/css/bootstrap.min.css');
+        $this->headScript()->prependFile($this->baseUrl() . '/bootstrap/js/bootstrap.min.js');
+
+# Imports do Jquery-UI
+        $this->headLink()->prependStylesheet($this->baseUrl() . '/css/jquery-ui/jquery-ui.css');
+        $this->headScript()->prependFile($this->baseUrl() . '/js/jquery-ui/jquery-ui.js');
+
+# Import's Jquery Core
+        $this->headScript()->prependFile($this->baseUrl() . '/js/jquery.min.js');
+
+# Imprimo as importações na tela
+        echo $this->headLink(), $this->headScript();
+        ?>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+    <body>
+
+    
+        
+      
+    
+        <div id="header"  >
+            <div id="titlePanel">
+                </br>
+                <span id='sectorName'>ZendStrap </span></br>
+                <span id='systemName'>ZendStrap System - Module: default</span>
+            </div>
+            <?php if (isset($this->usuario)) { ?>
+                <div id="userPanel" >
+
+                    <div id="loggedas">
+                        <p><strong>Acessando como: </strong><?php echo $this->usuario->login; ?> </p>
+                        <span style="text-align: right; float:right"><strong><a href="<?php echo $this->url(array('controller' => 'auth', 'action' => 'logout'), null, true); ?>">Sair do sistema</a></strong></span>	
+                    </div>
+
+                </div>
+            <?php } ?>
+
+        </div>
+
+        <div id="blank-body"  >
+            <?php echo $this->navigation()->menu(); ?> 
+            <div class="col-sm-12"  >
+                <?php echo $this->message; 
+                $oo = $this->tt;
+                $oo->setMenuName('Menu Principal');
+                $oo->setVerticalDisplay(2);
+                echo $oo;
+                
+                ?>
+
+                
+
+
+                <?php echo $this->layout()->content; ?>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+
+        <div id="footer" >
+
+            <div id='footerSecretaryName' >Nome 1</div>
+
+            <div id='footerMdaName' >Nome 2</div>
+            <br/>
+
+            <div id='copyright' >Jhonatan Morais © 2015-2020 - ZendStrap Versão: <?php echo $versao ?></div>
+        </div>
+
+    </body>
+</html>

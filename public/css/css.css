@@ -1,0 +1,230 @@
+@CHARSET "UTF-8";
+body { font-family: "Trebuchet MS", Verdana, sans-serif;  color:#484848; margin: 0; padding: 0; background-color:#00420c }
+#blank-body{
+	
+	background-color:#fff;
+	padding: 0% 0 20% 0;
+	
+}
+#header {
+			
+			
+			/*height:12em; tamanho oficial */
+			height:11em;
+			margin:0;
+			background-color: #0A5517;
+			background-image: radial-gradient(ellipse at center, #19882c 1%,#025310 100%);
+			/*background-color:#507AAA;*/
+			color:#f8f8f8; 
+			padding: 4px 8px 0px 6px; 
+			position:relative;
+			font-family: openSans, Verdana, sans-serif !important;
+		}
+#header a, a:link, a:visited{ color: #fff; text-decoration: none; }
+#header a:hover, a:active{ color: #fff; text-decoration: underline;}		
+
+#titlePanel{
+	
+	float: left; 
+	margin: 2.5em 0 0 2em;
+	letter-spacing: -0.05em;
+	font-weight: bold;
+}
+#sectorName{
+	vertical-align:text-bottom; 
+	/*font-size: 12px;*/
+	font-size: 1em;
+	
+}
+#systemName{
+	vertical-align:text-bottom; 
+	/*font-size: 25px;*/
+	font-size: 2.08em;
+	
+}
+
+
+#userPanel{
+	float: right; 
+	margin:5em 2em 0em 0em; 
+	padding: 12px 12px 12px 12px ;
+	font-size: 10px;
+	/*background-color: #0A5517;*/
+	/*background-image: radial-gradient(ellipse at center, #19882c 1%,#025310 100%);*/
+	border-radius: 5px;
+	background: rgba(10,85,23,1);
+	background: -moz-radial-gradient(center, ellipse cover, rgba(10,85,23,1) 0%, rgba(10,85,23,0.51) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(10,85,23,1)), color-stop(100%, rgba(10,85,23,0.51)));
+	background: -webkit-radial-gradient(center, ellipse cover, rgba(10,85,23,1) 0%, rgba(10,85,23,0.51) 100%);
+	background: -o-radial-gradient(center, ellipse cover, rgba(10,85,23,1) 0%, rgba(10,85,23,0.51) 100%);
+	background: -ms-radial-gradient(center, ellipse cover, rgba(10,85,23,1) 0%, rgba(10,85,23,0.51) 100%);
+	background: radial-gradient(ellipse at center, rgba(10,85,23,1) 0%, rgba(10,85,23,0.51) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a5517', endColorstr='#0a5517', GradientType=1 );
+}
+
+
+/***** Menu Principal simples horizontal *****/
+#menu{
+	background-color: #00420c;
+	padding:0% 0  0 0 ;
+	/*width:10%;*/
+	height:auto ;
+	vertical-align: middle;
+}
+
+#menu ul {margin: 0.5%  2% 0.5% ; font-size: 13px; color: #6ca177;     }
+#menu ul li {list-style-type:none; display: inline; border-left: solid 1px #fff; border-right: solid 1px #fff; padding:6px; text-align: center;  }
+#menu ul li:HOVER {background-color:#0a5517  }
+#menu ul li span {font-style:italic;}
+#menu a, a:link, a:visited{ color: #fff; text-decoration: none; }
+#menu a:hover, a:active{ text-decoration: underline;}
+
+
+/*** Footer ***/
+#footer{
+ 
+  border-top: 1px solid #bbb;
+  padding: 10px 0 30px 0;
+  background: #034811;
+  height: auto;	
+  color: #fff;
+ 
+ 
+  }
+
+#footerSecretaryName{
+	
+	margin-left:5%;
+	font-size: 15px;
+	float:left;
+	
+	
+	
+}
+#footerMdaName{
+	margin-right:5%;
+	font-size: 15px;
+	float:right;
+	
+	
+	
+}
+#copyright{
+	clear: both;
+	font-size: 0.9em;
+ margin-top:20px;
+  padding: 5px;
+  text-align: center;
+  background: #034811
+	
+}
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.box{
+padding:6px;
+margin-bottom: 10px;
+background-color:#f6f6f6;
+color:#505050;
+line-height:1.5em;
+border: 1px solid #e4e4e4;
+}
+  
+ /* Antigo css de tabela inicialmente utilizado. foi substituido pelo bootstrap
+table th {  background-color:#EEEEEE; padding: 4px; white-space:nowrap; }
+table { border: 1px solid #e4e4e4;  border-collapse: collapse; width: 100%; margin-bottom: 4px; }
+table.attributes { width: 100% }
+table.attributes th { vertical-align: top; text-align: left; }
+table.attributes td { vertical-align: top; }
+
+table.boards a.board, h3.comments { background: url(../images/comment.png) no-repeat 0% 50%; padding-left: 20px; }
+
+table tr:nth-child(odd){
+	background-color:#f6f7f8;
+}
+
+td.center {text-align:center;}
+
+table td {padding:5px;}
+table p {margin:0;}
+*/
+
+
+/***** Links *****/
+a, a:link, a:visited{ color: #0a5517; text-decoration: none; }
+a:hover, a:active{ text-decoration: underline;}
+a img{ border: 0; }
+
+/***** Box de avisos/mensagens *****/
+/* Obsoleto foi subistituido pelo bootstrap
+.msgAviso{
+ margin-bottom:5px;
+ padding: 5px;
+ text-align:center;
+ border: 1px solid #CEE3F6;
+ background-color: #EFFBF5
+ 
+}
+*/
+.center{
+	margin:0 auto;
+	
+}
+
+/*** HEADERS ***/
+h2{
+	
+  border-bottom: 1px solid #00500f;
+ /* text-transform: uppercase;*/
+  font-weight: bold;
+  font-size: 15px;
+  padding: 0px 0px 5px 0px;
+  
+  
+	
+}
+
+h3{
+	
+  border-bottom: 1px dotted #00500f;
+ /* text-transform: uppercase;*/
+  font-weight: bold;
+  font-size: 13px;
+  padding: 0px 0px 5px 0px;
+  
+  
+	
+}
+
+h4{
+	
+
+ /* text-transform: uppercase;*/
+  font-weight: bold;
+  font-size: 13px;
+  
+  
+  
+	
+}
+
+
+

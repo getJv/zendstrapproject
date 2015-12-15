@@ -1,0 +1,63 @@
+<?php
+/**
+ * Partial para impressão do menu bottstrap configurado pelo Zendstrap_View_Helper_Menu
+ * @autor Jhonatan Morais <jhonatanvinicius@gmail.com>
+ * @version 1.0 15/12/2015
+ */
+$menu = $this->navigation()->menu();
+$container = $menu->getContainer();
+?>
+
+<?php if ($menu->getMenuVerticalWidth()): ?> <div class="col-sm-<?php echo $menu->getMenuVerticalWidth(); ?>"> <?php endif; ?>
+    <nav class="<?php echo $menu->getMenuLayout(); ?> ">
+        <div class="container-fluid">
+
+            <?php if ($menu->hasCollapsiveLayout()): ?>   
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> 
+                </button>
+            <?php endif; ?>   
+
+            <?php if ($menu->hasMenuName()): ?>
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"><?php echo $menu->getMenuName(); ?></a>
+                </div>
+            <?php endif; ?>
+            <?php if ($menu->getMenuVerticalWidth()): ?> <div class='clearfix'></div> <?php endif; ?>
+            <div id='myNavbar' class=" <?php
+            if ($menu->hasCollapsiveLayout()) {
+                echo $menu->getCollapsiveLayout();
+            }
+            ?>">
+                <ul class="<?php echo $menu->getMenuDisposition()?>">
+                    <?php
+                    foreach ($container as $page):
+                        $customProperties = $page->getCustomProperties();
+                        $active = ($page->isActive()) ? 'active' : '';
+                        $hasSubpages = ($page->hasPages()) ? true : false;
+                        if ($hasSubpages) {
+                            ?>
+                            <li class=" <?php echo $active; ?>  dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <span class="<?php echo (!isset($customProperties['icon']))? : $customProperties['icon']; ?>"></span> <?php echo $page->label; ?><span class="caret"> </span> </a>
+                                <ul class="dropdown-menu">
+                                    <?php foreach ($page->getPages() as $subPage): ?>
+                                        <a href="<?php echo $subPage->getHref(); ?>" ><?php echo $subPage->label; ?></a>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </li>
+                        <?php }else { ?>
+                            <li class=" <?php echo $active; ?>">
+                                <a href="<?php echo $page->getHref() ?>"> 
+                                    <span class="<?php echo (!isset($customProperties['icon']))? : $customProperties['icon']; ?>"></span>
+                                    <?php echo $page->label; ?> 
+                                </a>
+                            </li>
+                        <?php } ?>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <?php if ($menu->getMenuVerticalWidth()): ?> </div> <?php endif; ?>

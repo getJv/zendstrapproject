@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+   
+<?php
+$versao = "1.0";
+
+#import css principal 
+$this->headLink()->appendStylesheet($this->baseUrl().'/css/css.css');
+
+# Imports do bootStrap 3.3.5
+ $this->headLink()->prependStylesheet($this->baseUrl().'/bootstrap/css/bootstrap.min.css');
+ $this->headScript()->prependFile($this->baseUrl() .'/bootstrap/js/bootstrap.min.js');
+
+# Imports do Jquery-UI
+ $this->headLink()->prependStylesheet($this->baseUrl().'/css/jquery-ui/jquery-ui.css');
+ $this->headScript()->prependFile($this->baseUrl() .'/js/jquery-ui/jquery-ui.js');
+
+# Import's Jquery Core
+$this->headScript()->prependFile($this->baseUrl() .'/js/jquery.min.js');
+
+# Imprimo as importações na tela
+echo $this->headLink(), $this->headScript();
+
+
+?>
+
+</head>
+<body>
+<div id="blank-body"  >
+	 <div class="container"  >
+		
+	 	
+               
+
+              <?php  
+              
+              $menu = $this->navigation()->menu();
+              $menu->setMenuName('Menu Principal');
+              $menu->setMenuInverseLayout();
+              $menu->setFixedTopLayout();
+              $menu->setCollapsiveLayout();
+              echo $menu;
+        
+              ?> 
+                    
+         <?php echo $this->message ;?>
+                    
+                
+                    <?php echo $this->layout()->content;?>
+	 </div>
+	 <div style="clear:both"></div>
+</div>
+
+<div id="footer" >
+  
+    <div id='footerSecretaryName' >Nome 1</div>
+    
+    <div id='footerMdaName' >Nome 2</div>
+    <br/>
+
+    <div id='copyright' >Jhonatan Morais © 2015-2020 - ZendStrap Versão: <?php echo $versao?></div>
+</div>
+</body>
+</html>
