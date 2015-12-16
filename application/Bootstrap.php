@@ -31,6 +31,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
         # Carrega o plugin que faz a leitura do layout de cada modulo
         $front->registerPlugin(new Zendstrap_Plugins_LayoutSelector());
+        
+         # Carrega o plugin de autenticação
+        $front->registerPlugin(new Zendstrap_Plugins_Auth());
     }
 
     /**
@@ -90,6 +93,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         $view = $this->getResource('view');
         //$view->addHelperPath ( "Zendstrap/View/Helper","Zendstrap_View_Helper_FlashMessages" );
         //$view->addHelperPath ( "Zendstrap/View/Helper","Zendstrap_View_Helper_Menu" );
+    }
+    
+    
+    protected function _initAcl()
+    {
+        $aclSetup = new Zendstrap_Acl_Setup();
     }
 
 }
