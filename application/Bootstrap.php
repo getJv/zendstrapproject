@@ -10,15 +10,18 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
         $view->doctype('HTML5');
     }
-    
-    protected function _initAutoload()
-{
-    $autoloader = new Zend_Application_Module_Autoloader(array(
+
+    protected function _initAutoload() {
+        $autoloader = new Zend_Application_Module_Autoloader(array(
             'basePath' => APPLICATION_PATH,
             'namespace' => ''
-    ));
-    return $autoloader;
-}
+        ));
+        return $autoloader;
+    }
+
+    protected function _initAcl() {
+        $aclSetup = new Zendstrap_Acl_Setup();
+    }
 
     /**
      * Inicializa os plugins utilizados na aplicação
@@ -31,9 +34,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
         # Carrega o plugin que faz a leitura do layout de cada modulo
         $front->registerPlugin(new Zendstrap_Plugins_LayoutSelector());
-        
-         # Carrega o plugin de autenticação
+
+        # Carrega o plugin de autenticação
         $front->registerPlugin(new Zendstrap_Plugins_Auth());
+        
     }
 
     /**
@@ -42,21 +46,20 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
      * @date 25/06/2015 
      */
     protected function _initNavigation() {
-      
+
         $this->bootstrap('layout');
 
         $layout = $this->getResource('layout');
 
         $view = $layout->getView();
 
-        $config = new Zend_Config_Xml(APPLICATION_PATH . '/configs/navigation.xml','nav');
-        
+        $config = new Zend_Config_Xml(APPLICATION_PATH . '/configs/navigation.xml', 'nav');
+
         $navigation = new Zend_Navigation($config);
-          
+
         $menu = $view->navigation($navigation)->menu();
-        
+
         $view->tt = $menu;
-      
     }
 
     /**
@@ -68,7 +71,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         $loader = Zend_Loader_Autoloader::getInstance();
         $loader->setFallbackAutoloader(true);
 //        $loader->registerNamespace('Zendstrap_');
-
 //        $nameSpaceToPath = array(
 //            'admin_' => APPLICATION_PATH . '/modules/admin'
 //                //, 'Auth_' => APPLICATION_PATH . '/modules/Auth'
@@ -93,12 +95,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         $view = $this->getResource('view');
         //$view->addHelperPath ( "Zendstrap/View/Helper","Zendstrap_View_Helper_FlashMessages" );
         //$view->addHelperPath ( "Zendstrap/View/Helper","Zendstrap_View_Helper_Menu" );
-    }
-    
-    
-    protected function _initAcl()
-    {
-        $aclSetup = new Zendstrap_Acl_Setup();
     }
 
 }

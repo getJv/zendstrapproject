@@ -11,7 +11,9 @@
           <actionMethod actionName="index"/>
           <actionMethod actionName="forbidden"/>
         </controllerFile>
-        <controllerFile controllerName="Error"/>
+        <controllerFile controllerName="Error">
+          <actionMethod actionName="forbidden"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory enabled="false"/>
       <layoutsDirectory>
@@ -45,7 +47,10 @@
             <formFile formName="Login"/>
           </formsDirectory>
           <layoutsDirectory enabled="false"/>
-          <modelsDirectory/>
+          <modelsDirectory>
+            <modelFile modelName="User"/>
+            <modelFile modelName="Auth"/>
+          </modelsDirectory>
           <servicesDirectory enabled="false"/>
           <viewsDirectory>
             <viewScriptsDirectory>
@@ -95,6 +100,9 @@
             <viewScriptFile forActionName="error"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="forbidden"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Error">
             <viewScriptFile forActionName="forbidden"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>

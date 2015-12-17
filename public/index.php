@@ -36,7 +36,7 @@
  			echo '#### Métodos disponíveis em '.get_class($var).' ####'.PHP_EOL; print_r(get_class_methods($var)); 
  			break;
                 case 'om':
- 			echo '#### Métodos disponíveis em '.get_class($var).' ####'.PHP_EOL; print_r(get_class_methods($var)); 
+ 			echo '#### Métodos disponíveis em '.get_class($var).' ####'.PHP_EOL; print_r(get_class_methods($var)); exit;
  			break;
  		 		
  	}
