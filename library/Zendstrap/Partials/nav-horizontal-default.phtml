@@ -6,6 +6,7 @@
  */
 $menu = $this->navigation()->menu();
 $container = $menu->getContainer();
+//Jdebug($acl);
 ?>
 
 <?php if ($menu->getMenuVerticalWidth()): ?> <div class="col-sm-<?php echo $menu->getMenuVerticalWidth(); ?>"> <?php endif; ?>
@@ -43,7 +44,7 @@ $container = $menu->getContainer();
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <span class="<?php echo (!isset($customProperties['icon']))? : $customProperties['icon']; ?>"></span> <?php echo $page->label; ?><span class="caret"> </span> </a>
                                 <ul class="dropdown-menu">
                                     <?php foreach ($page->getPages() as $subPage): ?>
-                                        <a href="<?php echo $subPage->getHref(); ?>" ><?php echo $subPage->label; ?></a>
+                                       <li> <a href="<?php echo $subPage->getHref(); ?>" ><?php echo $subPage->label; ?></a></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </li>

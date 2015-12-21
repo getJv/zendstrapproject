@@ -2,6 +2,8 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
+    public $aclSetup;
+    
     protected function _initDoctype() {
 
         $this->bootstrap('view');
@@ -20,7 +22,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
     }
 
     protected function _initAcl() {
-        $aclSetup = new Zendstrap_Acl_Setup();
+        
+       
+        
+        $this->aclSetup = new Zendstrap_Acl_Setup();
     }
 
     /**

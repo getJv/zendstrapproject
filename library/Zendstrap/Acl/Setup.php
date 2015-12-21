@@ -41,7 +41,7 @@ class Zendstrap_Acl_Setup
     {
         $this->_acl->addRole( new Zend_Acl_Role('guest') );
         $this->_acl->addRole( new Zend_Acl_Role('visualizador'), 'guest' );
-        $this->_acl->addRole( new Zend_Acl_Role('admin'), 'visualizador' );
+        $this->_acl->addRole( new Zend_Acl_Role('admin') );
     }
     /**
      * Registro os controllers
@@ -52,21 +52,20 @@ class Zendstrap_Acl_Setup
         $this->_acl->addResource( new Zend_Acl_Resource('user') );
         $this->_acl->addResource( new Zend_Acl_Resource('auth') );
         $this->_acl->addResource( new Zend_Acl_Resource('error') );
-        $this->_acl->addResource( new Zend_Acl_Resource('index') );
-//        $this->_acl->addResource( new Zend_Acl_Resource('noticias') );
-//        $this->_acl->addResource( new Zend_Acl_Resource('usuarios') );
+        
     }
 
     protected function _setupPrivileges()
     {
-        $this->_acl->allow( 'guest', 'index', array('index'))
-                   ->allow( 'guest', 'auth', array('index', 'login') )
+        $this->_acl->allow( 'guest', 'auth', array('index', 'login') )
                    ->allow( 'guest', 'error', array('error', 'forbidden') );
                    
-        $this->_acl->allow( 'visualizador', 'user', array('view') )
+        $this->_acl->allow( 'visualizador', 'user', 'view' )
                    ->allow( 'visualizador', 'auth', 'logout' );
         
-        $this->_acl->allow( 'admin', 'user', array('index', 'adicionar','view','edit','active','unactive') );
+        $this->_acl->allow( 'admin', 'user', array('index', 'adicionar','view','edit','active','unactive') )
+                   ->allow( 'admin', 'auth', 'logout' )
+                    ;
     }
 
     protected function _saveAcl()

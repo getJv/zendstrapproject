@@ -219,5 +219,53 @@ CREATE INDEX index_member_roles_on_permission_id
 
 
 
+-- View: vw_users
 
+-- DROP VIEW vw_users;
+
+CREATE OR REPLACE VIEW vw_users AS 
+ SELECT u.id,
+    u.login,
+    u.hashed_password,
+    u.firstname,
+    u.lastname,
+    u.mail,
+    u.mail_notification,
+    u.admin,
+    u.status,
+    u.language,
+    ( SELECT array_agg(m.system_id) AS array_agg
+           FROM members m
+          WHERE m.user_id = u.id) AS systems
+   FROM users u;
+
+ALTER TABLE vw_users
+  OWNER TO postgres;
+COMMENT ON VIEW vw_users
+  IS 'Retorna as informações do usuário e seus sistemas vinculados';
+
+
+
+-- View: vw_roles_permissions
+
+-- DROP VIEW vw_roles_permissions;
+
+CREATE OR REPLACE VIEW vw_roles_permissions AS 
+ SELECT m.user_id,
+    r.id AS role_id,
+    r.name AS role_name,
+    r.system_id,
+    s.name AS system_name,
+    array_agg(rp.permission_id) AS permissions
+   FROM roles r
+     JOIN member_roles mr ON r.id = mr.role_id
+     JOIN members m ON m.id = mr.member_id
+     JOIN role_permissions rp ON r.id = rp.role_id
+     JOIN systems s ON r.system_id = s.id
+  GROUP BY r.id, s.name, m.user_id;
+
+ALTER TABLE vw_roles_permissions
+  OWNER TO postgres;
+COMMENT ON VIEW vw_roles_permissions
+  IS 'Dado um user_id e um system_id, retona os perfis e suas respectivas permissões para o sistema consultado.';
 

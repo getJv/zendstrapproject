@@ -67,7 +67,7 @@ class Zendstrap_Plugins_Auth extends Zend_Controller_Plugin_Abstract
         $controller = "";
         $action     = "";
         $module     = "";
-        
+       // Jdebug($request);
         if ( !$this->_auth->hasIdentity() && !$this->_isDefaultModule($request) ) {
             $controller = $this->_notLoggedRoute['controller'];
             $action     = $this->_notLoggedRoute['action'];
@@ -93,12 +93,6 @@ class Zendstrap_Plugins_Auth extends Zend_Controller_Plugin_Abstract
     {
         $this->_acl = Zend_Registry::get('acl');
         $user = $this->_auth->getIdentity();
-        
-        /*APENAS PARA TESTE*/
-        $this->_auth->clearIdentity();
-        
-        
-        
         
         if ( !$this->_acl->has( $controller ) || !$this->_acl->isAllowed( $user, $controller, $action ) ){
             return false;

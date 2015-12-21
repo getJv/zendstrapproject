@@ -3,8 +3,10 @@
 class Admin_Model_User implements Zend_Acl_Role_Interface
 {
     private $_userName;
-    private $_roleId;
+    private $_roleId = 'guest';
     private $_fullName;
+    private $_systems;
+    
 
     public function getUserName()
     {
@@ -36,6 +38,16 @@ class Admin_Model_User implements Zend_Acl_Role_Interface
     public function setRoleId($roleId)
     {
         $this->_roleId = (string) $roleId;
+    }
+     public function getUserSystems()
+    {
+        return $this->_systems;
+    }
+
+    public function setUserSystems($userSystems)
+    {
+        $userSystems =   str_replace(array('{','}'), array('',''), $userSystems) ;
+        $this->_systems = explode(',', $userSystems);
     }
 }
 

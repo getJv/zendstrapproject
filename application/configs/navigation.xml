@@ -3,38 +3,56 @@
     <nav>
         
             <zend >
-                <label>Zend</label>
-                <uri>http://www.zend-project.com/</uri>
+                <label>Home</label>
+                <uri>/ZendstrapProject</uri>
                 <icon>glyphicon glyphicon-heart</icon>
 
             </zend>
 
             <page1>
-                <label>Page 1</label>
-                <uri>page1</uri>
+                <label>Administração</label>
+                <uri>/ZendstrapProject/admin/</uri>
                 <pages>
 
                     <page1_1>
-                        <label>Page 1.1</label>
-                        <uri>page1/page1_1</uri>
+                        <label>Usuários</label>
+                        <uri>/ZendstrapProject/admin/user</uri>
                     </page1_1>
+
+                
+                
+
+                    <page1_2>
+                        <label>Perfis</label>
+                        <uri>/ZendstrapProject/admin/perfis</uri>
+                    </page1_2>
+
+               
+
+                    <page1_3>
+                        <label>Sistemas</label>
+                        <uri>/ZendstrapProject/admin/system</uri>
+                    </page1_3>
 
                 </pages>
             </page1>
-
+            
             <page2>
-                <label>Page 2</label>
-                <uri>page2</uri>
-                <class>kk</class>
-                <pages>
+                <label>Login</label>
+                <controller>admin</controller>
+                <action>login</action>
 
-                    <page1_1>
-                        <label>Page 2.1</label>
-                        <uri>page1/page1_1</uri>
-                    </page1_1>
-
-                </pages>
             </page2>
+             <page3>
+                <label>Logout</label>
+                <module>admin</module>
+                <controller>auth</controller>
+                <action>logout</action>
+                <resource>logout</resource>
+
+            </page3>
+
+           
        
     </nav>
   
