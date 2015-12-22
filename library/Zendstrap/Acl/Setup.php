@@ -1,10 +1,6 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/* COLOCAR ESTA CHAMADA DENTRO DO CONTROLE DE AUTENTICAÇÂO  */
 
 /**
  * Description of Setup
@@ -52,6 +48,7 @@ class Zendstrap_Acl_Setup
         $this->_acl->addResource( new Zend_Acl_Resource('user') );
         $this->_acl->addResource( new Zend_Acl_Resource('auth') );
         $this->_acl->addResource( new Zend_Acl_Resource('error') );
+        $this->_acl->addResource( new Zend_Acl_Resource('system') );
         
     }
 
@@ -65,6 +62,7 @@ class Zendstrap_Acl_Setup
         
         $this->_acl->allow( 'admin', 'user', array('index', 'adicionar','view','edit','active','unactive') )
                    ->allow( 'admin', 'auth', 'logout' )
+                   ->allow( 'admin', 'system', 'index' )
                     ;
     }
 
