@@ -53,6 +53,8 @@
           </controllersDirectory>
           <formsDirectory>
             <formFile formName="Login"/>
+            <formFile formName="User"/>
+            <formFile formName="System"/>
           </formsDirectory>
           <layoutsDirectory enabled="false"/>
           <modelsDirectory>

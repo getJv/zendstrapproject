@@ -4,7 +4,7 @@ class Admin_Model_System extends Zendstrap_Model_AbstractModel {
 
     protected $id;
     protected $name;
-    protected $is_public = "abacate";
+    protected $is_public = 0;
     protected $created_on;
     protected $updated_on;
     protected $identifier;
@@ -32,12 +32,13 @@ class Admin_Model_System extends Zendstrap_Model_AbstractModel {
 
     public function setIs_public($value) {
 
-        $this->is_public = $value;
+         
+        $this->is_public = (bool) (false == $value )? 0:1;
     }
 
     public function getIs_public() {
 
-        return $this->is_public;
+        return (bool) $this->is_public;
     }
 
     public function setCreated_on($value) {

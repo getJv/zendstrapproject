@@ -169,7 +169,7 @@ class Zendstrap_View_Helper_Menu extends Zend_View_Helper_Navigation_Menu {
 
     public function render(Zend_Navigation_Container $container = null, array $options = array()) {
         #define a partial utilizada para renderizar o menu.
-       // $this->menu()->setPartial("nav-horizontal-default.phtml");
+        $this->menu()->setPartial("nav-horizontal-default.phtml");
         return parent::render($container, $options);
     }
 

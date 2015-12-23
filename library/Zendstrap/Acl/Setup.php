@@ -62,7 +62,7 @@ class Zendstrap_Acl_Setup
         
         $this->_acl->allow( 'admin', 'user', array('index', 'adicionar','view','edit','active','unactive') )
                    ->allow( 'admin', 'auth', 'logout' )
-                   ->allow( 'admin', 'system', 'index' )
+                   ->allow( 'admin', 'system', array('index','add','edit') )
                     ;
     }
 

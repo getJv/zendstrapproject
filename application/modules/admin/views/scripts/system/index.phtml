@@ -1,4 +1,14 @@
-<br /><br />
-<div id="view-content">
+
 	<p>View script for controller <b>System</b> and script/action name <b>index</b></p>
-</div>
+        <p>a<a href="<?php echo $this->url(array('module' =>'admin','controller' => 'system','action'=>'add'), null, true); ?>">Novo</a></p>
+
+
+<?php echo ( sizeof( $this->messages ) > 0 ) ? $this->messages[0] : ""; ?>
+<?php echo $this->form; 
+
+foreach(array_reverse($this->entries) as $entry){
+    
+  echo '<pre>';  print_r($entry); echo '</pre>';
+}
+
+?>

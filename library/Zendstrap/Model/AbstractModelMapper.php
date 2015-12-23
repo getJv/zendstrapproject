@@ -38,7 +38,7 @@ abstract class Zendstrap_Model_AbstractModelMapper {
 
         if (!(new $beanName() instanceof Zendstrap_Model_AbstractModel)) {
 
-            throw new Exception("O nome da classe {$beanName} não é instancia de Zendstrap_Model_AbstractModel");
+            throw new Exception("A classe {$beanName} não é instancia de Zendstrap_Model_AbstractModel");
         }
         $this->_beanName = $beanName;
     }
@@ -84,6 +84,7 @@ abstract class Zendstrap_Model_AbstractModelMapper {
     public function find($id) {
         
         $result = $this->getDbTable()->find($id);
+         
         if (0 == count($result)) {
             return null;
         }
@@ -91,37 +92,28 @@ abstract class Zendstrap_Model_AbstractModelMapper {
         return $this->getModelClass($result->current()->toArray());
     }
     /**
-     * Realisa o INSERT ou UPDATE do objeto recebido.</br>
-     * 
+     * Realiza o INSERT ou UPDATE do objeto recebido.</br>
+     * IMPORTANTE: O primeiro atributo do beanModel deve ser o campo id(PK) da entidade.</br>
+     * Caso não seja possivel atender esta condição  sobreescreva o metodo save no Mapper correspondente.
      * @param Zendstrap_Model_AbstractModel $obj
      * @throws Exception
      */
-    public  function save($obj){
+    public  function save($obj){ 
         
         if (!( $obj instanceof Zendstrap_Model_AbstractModel)) {
 
-            throw new Exception("O nome da classe {$beanName} não é instancia de Zendstrap_Model_AbstractModel");
+            throw new Exception("A classe ".  get_class($obj)." não é instancia de Zendstrap_Model_AbstractModel");
         }
-        
-        
-        $arrData = $obj->getArrayCopy();
+        $arrData = $obj->toArray();
         if (null === ($id = $obj->getId())) {
             
             array_shift($arrData); #retiro o primeiro registro(PK) para não dar ero de insert
             $this->getDbTable()->insert($arrData);
         } else {
             
-            try {
-                $keys = array_keys($arrData);
-                $this->getDbTable()->update($arrData, array($keys[0].'= ?' => $id));
-            } catch (Exception $exc) {
-                #http://stackoverflow.com/questions/7723657/how-to-print-exact-sql-query-in-zend-framework
-                $tt = $this->getDbTable()->select();
-                Jdebug($tt->__toString()); 
-            }
-
-
-
+            $keys = array_keys($arrData);
+            $this->getDbTable()->update($arrData, array($keys[0].'= ?' => $id));
+        
             
         }
         

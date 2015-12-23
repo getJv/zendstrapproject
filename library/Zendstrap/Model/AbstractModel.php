@@ -15,7 +15,7 @@ abstract class Zendstrap_Model_AbstractModel {
      * Retorna os atributos do objeto dentro de um array simples
      * @return type
      */
-    public function getArrayCopy() {
+    public function toArray() {
         $arr = get_object_vars($this);
 
 
