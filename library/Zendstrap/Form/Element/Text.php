@@ -61,7 +61,7 @@ class Zendstrap_Form_Element_Text extends Zend_Form_Element implements Zendstrap
 
     public function setBootstrapConfiguration($content = null) {
 
-        $this->bsUtils->addCssClass($this, Cgmi2_Form_MyBootstrapUtils::BS_FIELD_CSS_CLASS);
+        $this->bsUtils->addCssClass($this, Zendstrap_Form_MyBootstrapUtils::BS_FIELD_CSS_CLASS);
 
         /**
          * Configuro a renderização para formularios horizontais ou não

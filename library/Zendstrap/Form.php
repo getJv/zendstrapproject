@@ -23,6 +23,15 @@ class Zendstrap_Form extends Zend_Form {
         $this->_initializePrefixes();
         parent::__construct($options);
     }
+    /**
+     * Adiciona a classe Css do bootstrap que coloca um 
+     * fundo cinza no backgroudcolor do form.
+     * @return void
+     * @author Jhonatan Morais <jhonatanvinicius@gmail.com>
+     */
+    public function setBoxContainer(){
+        $this->addAttribs(array('class'=>Zendstrap_Form_MyBootstrapUtils::BS_BOX_CONTAINER_CSS_CLASS));
+    }
 
     /**
      * Retorna verdadeiro se o formulario estiver configurado com apresentação horizontal de campos

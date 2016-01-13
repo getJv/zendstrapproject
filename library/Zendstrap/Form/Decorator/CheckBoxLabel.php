@@ -1,6 +1,6 @@
 <?php
 
-class Cgmi2_Form_Decorator_CheckBoxLabel extends Zend_Form_Decorator_Abstract 
+class Zendstrap_Form_Decorator_CheckBoxLabel extends Zend_Form_Decorator_Abstract 
 {
     
    

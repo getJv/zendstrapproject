@@ -1,6 +1,6 @@
 
 	<p>View script for controller <b>System</b> and script/action name <b>index</b></p>
-        <p>a<a href="<?php echo $this->url(array('module' =>'admin','controller' => 'system','action'=>'add'), null, true); ?>">Novo</a></p>
+        <p><a href="<?php echo $this->url(array('module' =>'admin','controller' => 'system','action'=>'add'), null, true); ?>">Novo</a></p>
 
 
 <?php echo ( sizeof( $this->messages ) > 0 ) ? $this->messages[0] : ""; ?>
@@ -9,6 +9,7 @@
 foreach(array_reverse($this->entries) as $entry){
     
   echo '<pre>';  print_r($entry); echo '</pre>';
+  
 }
 
 ?>

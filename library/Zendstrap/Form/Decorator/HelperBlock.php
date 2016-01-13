@@ -1,6 +1,6 @@
 <?php
 
-class Cgmi2_Form_Decorator_HelperBlock extends Zend_Form_Decorator_Description 
+class Zendstrap_Form_Decorator_HelperBlock extends Zend_Form_Decorator_Description 
 {
     
     const BS_HELPER_BLOCK_CLASS = 'help-block';

@@ -104,15 +104,17 @@ abstract class Zendstrap_Model_AbstractModelMapper {
 
             throw new Exception("A classe ".  get_class($obj)." não é instancia de Zendstrap_Model_AbstractModel");
         }
+        
         $arrData = $obj->toArray();
-        if (null === ($id = $obj->getId())) {
+        
+        if ( null === $obj->getId() || "" == $obj->getId() ) {
             
             array_shift($arrData); #retiro o primeiro registro(PK) para não dar ero de insert
             $this->getDbTable()->insert($arrData);
         } else {
             
             $keys = array_keys($arrData);
-            $this->getDbTable()->update($arrData, array($keys[0].'= ?' => $id));
+            $this->getDbTable()->update($arrData, array($keys[0].'= ?' => $obj->getId()));
         
             
         }

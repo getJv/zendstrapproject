@@ -7,6 +7,7 @@ class Zendstrap_Form_MyBootstrapUtils implements Zendstrap_Form_MyBootstrapInter
     const BS_FIELD_CSS_CLASS = 'form-control';
     const BS_LABEL_CSS_CLASS = 'control-label';
     const BS_HIDDEN_CSS_CLASS = 'sr-only';
+    const BS_BOX_CONTAINER_CSS_CLASS = 'well';
 
     /**
      * @todo Verificar as siglas e tamanhos corretos para os tipos de tamanho e acrescenta las no array de disposição dos campos do form 

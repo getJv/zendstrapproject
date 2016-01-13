@@ -20,7 +20,7 @@ class Admin_SystemController extends Zend_Controller_Action {
         if (!$this->getRequest()->isPost()) {
             return;
         }
-
+        
         $data = $this->getRequest()->getPost();
 
         try {
@@ -33,6 +33,7 @@ class Admin_SystemController extends Zend_Controller_Action {
             //$this->_flashMessenger = $this->_helper->getHelper('FlashMessenger');
             return $this->_helper->redirector->goToRoute(array('controller' => 'system', 'module' => 'admin'), null, true);
         } catch (Exception $exc) {
+            Jdebug($exc);
             //$this->_helper->FlashMessenger($e->getMessage());  /* Criar uma exception propri para dados inváçidos, para aproveitar corretamete o form populate */
             $form->populate($data);
         }
