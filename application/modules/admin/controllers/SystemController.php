@@ -1,15 +1,21 @@
 <?php
 
-class Admin_SystemController extends Zend_Controller_Action {
+class Admin_SystemController extends Zendstrap_Controller_Action {
 
     public function init() {
-        /* Initialize action controller here */
+         parent::init();
     }
 
     public function indexAction() {
 
         $mapper = new Admin_Model_SystemMapper();
-        $this->view->entries = $mapper->fetchAll();
+       // $this->view->entries = $mapper->fetchAll();
+        
+        $this->view->paginator = $this->getPaginator($mapper->fetchAll()
+     					,$this->getRequest ()->getParam ( 'page' )
+     					,$this->getRequest ()->getParam ( 'per_page' ));
+        
+        
     }
 
     public function addAction() {
@@ -44,7 +50,9 @@ class Admin_SystemController extends Zend_Controller_Action {
         $form = new Admin_Form_System();
         $mapper = new Admin_Model_SystemMapper();
         $this->view->form = $form;
-
+        
+        
+         
         if (!$this->getRequest()->isPost()) {
 
             $id = $this->getRequest()->getParam('id');

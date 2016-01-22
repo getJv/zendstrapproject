@@ -1,0 +1,59 @@
+<?php 
+/* definição do template para a paginação
+ * @link http://framework.zend.com/manual/1.12/en/learning.paginator.control.html
+ * @link http://getbootstrap.com/components/#pagination
+ */
+?>
+<?php if ($this->pageCount): 
+//Jdebug($this,'c');
+?>
+
+<div style="float: left" >
+<nav >
+  <ul class="pagination pagination-sm ">
+  
+    <li   <?php if (!isset($this->previous)) echo "class='disabled'";?>   >
+        <a href="<?php echo $this->url(array('page' => $this->previous)); ?>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+   <?php foreach ($this->pagesInRange as $key => $page){?>
+   
+    <li  <?php if($key == $this->current )echo 'class="active"'; ?>  ><a href="<?php echo $this->url(array('page' => $key)); ?>"><?php echo  $page;?></a></li>
+   
+    <?php }?>
+    <li <?php if (!isset($this->next)) echo "class='disabled'";?> >
+      <a href="<?php echo $this->url(array('page' => $this->next)); ?>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    
+  </ul>
+</nav>
+
+</div>
+
+
+<div style='float:right' >
+	<?php echo "Itens: {$this->currentItemCount} / {$this->totalItemCount}   ";	?> |
+	Ver 
+	<select onchange="if (this.value != '') { window.location = this.value; }">
+		<?php foreach (array(10,20,30,40,50) as $op){?>
+		<option value="<?php echo $this->url(array('page' => $this->current,'per_page' => $op )); ?>" <?php if($this->itemCountPerPage == $op) echo 'selected'?>><?php echo $op;  ?></option>
+		
+		<?php }?> 
+	</select>
+	Itens por Página 
+
+</div>
+
+
+<div style="clear:both"></div>
+<?php endif; ?>
+
+
+
+
+
+
+ 

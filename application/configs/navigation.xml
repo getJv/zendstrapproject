@@ -17,6 +17,7 @@
                     <page1_1>
                         <label>Usuários</label>
                         <uri>/ZendstrapProject/admin/user</uri>
+                       
                     </page1_1>
 
                 
@@ -41,6 +42,7 @@
                 <label>Login</label>
                 <controller>admin</controller>
                 <action>login</action>
+                 
 
             </page2>
              <page3>

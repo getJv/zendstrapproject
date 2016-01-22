@@ -10,7 +10,7 @@
 class Zendstrap_View_Helper_FlashMessages extends Zend_View_Helper_Abstract {
 
     public function flashMessages($currentMessages = true) {
-
+        
         #Imprime mensagens para a pagina seguinte redirecionada... sobreescreve a $messages
         $messages = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages();
         #Imprime mensagens para a pagina atual. sem redirecionamento

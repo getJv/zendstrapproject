@@ -17,6 +17,10 @@
         $this->headLink()->prependStylesheet($this->baseUrl() . '/bootstrap/css/bootstrap.min.css');
         $this->headScript()->prependFile($this->baseUrl() . '/bootstrap/js/bootstrap.min.js');
 
+# Imports do datatable DataTables 1.10.10 #https://www.datatables.net
+       // $this->headLink()->prependStylesheet($this->baseUrl() . '/js/datatable/jquery.dataTables.min.css');
+        $this->headScript()->prependFile($this->baseUrl() . '/js/datatable/jquery.dataTables.min.js');
+
 # Imports do Jquery-UI
         $this->headLink()->prependStylesheet($this->baseUrl() . '/css/jquery-ui/jquery-ui.css');
         $this->headScript()->prependFile($this->baseUrl() . '/js/jquery-ui/jquery-ui.js');

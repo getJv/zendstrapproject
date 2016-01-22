@@ -9,16 +9,17 @@
 class Zendstrap_Controller_Action extends Zend_Controller_Action {
 
     protected $_flashMessenger = null;
-    protected $_user = null;
+    /*TODO voltar a fazer a captura do usuario logado foi comentada momentaneamente */
+    // protected $_user = null;
     protected $_redirector = null;
 
     public function init() {
         parent::init();
         #Captura as informações do usuário autenticado.
-        $this->_user = Zend_Auth::getInstance()->getIdentity();
+        //$this->_user = Zend_Auth::getInstance()->getIdentity();
         $this->_redirector = $this->_helper->getHelper('Redirector');
         #Coloca as informações do usuário na view
-        $this->view->usuario = $this->_user;
+        //$this->view->usuario = $this->_user;
         #Inicia o helper de mensagens
         $this->_flashMessenger = $this->_helper->getHelper('FlashMessenger');
     }
@@ -63,7 +64,7 @@ class Zendstrap_Controller_Action extends Zend_Controller_Action {
      * @param string $messageText
      */
     protected function addErrorMessage($messageText) {
-
+        
         $this->_flashMessenger->addMessage(array('error' => $messageText));
     }
 
@@ -87,17 +88,20 @@ class Zendstrap_Controller_Action extends Zend_Controller_Action {
     }
 
     /**
-     *  Configura o uso do ZendPaginator e retorna um registro de paginator atual
+     * Configura o uso do ZendPaginator e retorna um registro de paginator atual
+     * @param type $entryArray Array com os elementos que serão paginados
+     * @param int $currentPage Indica a página que será apresentada na apresentação
+     * @param int $itensPerPage Configura quantos itens serão apresentados na mesma página
      * @link http://framework.zend.com/manual/1.12/en/learning.paginator.control.html
      * @link http://getbootstrap.com/components/#pagination
      * @link http://zendgeek.blogspot.com.br/2009/07/zend-pagination-example.html
      * @return Zend_Paginator Object
      * @throws Execption
      */
-    protected function getPaginator($EntryArray, $currentPage = 1, $itensPerPage = 10) {
+   protected function getPaginator($entryArray, $currentPage = 1, $itensPerPage = 10) {
 
         # Validações Simples 
-        if (!is_array($EntryArray)) {
+        if (!is_array($entryArray)) {
             throw new Exception("EntryArray deve ser um arrayList.");
         }
         # CurrentPage deve ser um inteiro maior que 1.
@@ -116,7 +120,7 @@ class Zendstrap_Controller_Action extends Zend_Controller_Action {
             #Ativa a função para os numeros de paginação atualiarem, existem outras mas essa nos atente :D
             Zend_Paginator::setDefaultScrollingStyle('Sliding');
             #Configuro o Paginator
-            $paginator = Zend_Paginator::factory($EntryArray);
+            $paginator = Zend_Paginator::factory($entryArray);
             #Controla a pagina que será exibida
             if ($currentPage > 1) {
                 $paginator->setCurrentPageNumber($currentPage);
