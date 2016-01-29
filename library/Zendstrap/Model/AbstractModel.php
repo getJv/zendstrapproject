@@ -6,11 +6,10 @@
  * exatamente igual as colunas da entidade na base de dados. Apesar de a nomenclatura ficar ruim esta ação ,
  * vai te ajudar muito na hora de trabalhar com o ZendForm e com os métodos de consulta do Mapper que usam 
  * array tendo como chave o nome dos campos da entidade.
- * @author jhonatan.morais
+ * @author jhonatan.morais <jhonatanvinicius@gmail.com>
  */
 abstract class Zendstrap_Model_AbstractModel {
 
-    
     /**
      * Retorna os atributos do objeto dentro de um array simples
      * @return type
@@ -21,15 +20,15 @@ abstract class Zendstrap_Model_AbstractModel {
 
         return $arr;
     }
+
     /**
      * Retira a definição(destroy) de um atributo
      * @param type $propName
      */
-    public function unsetProp($propName){
+    public function unsetProp($propName) {
         unset($this->$propName);
     }
-    
-    
+
     /**
      * Cria um objeto a partir de um array  que contenha seus atributos
      * @param array $options Array com os atributos do objeto desejado
@@ -55,15 +54,16 @@ abstract class Zendstrap_Model_AbstractModel {
         }
         return $this->$method();
     }
+
     /**
      * Auxilia o método contrutor a criar um objeto populado a partir de um  array
      * @param array $options
      * @return \Zendstrap_Model_AbstractModel
      */
     public function setOptions(array $options) {
-       
-        
-        
+
+
+
         $methods = get_class_methods($this);
         foreach ($options as $key => $value) {
             $method = 'set' . ucfirst($key);

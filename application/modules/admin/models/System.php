@@ -32,8 +32,8 @@ class Admin_Model_System extends Zendstrap_Model_AbstractModel {
 
     public function setIs_public($value) {
 
-         
-        $this->is_public = (bool) (false == $value )? 0:1;
+
+        $this->is_public = (bool) (false == $value ) ? 0 : 1;
     }
 
     public function getIs_public() {
@@ -46,19 +46,35 @@ class Admin_Model_System extends Zendstrap_Model_AbstractModel {
         $this->created_on = $value;
     }
 
-    public function getCreated_on() {
-        if(null === $this->created_on) {return date('Y-m-d H:i:s');}
+    public function getCreated_on($ptbrFormat = true) {
+         
+        if (null === $this->created_on) {
+            return date('Y-m-d H:i:s');
+        }
+       
+        if ($ptbrFormat) {
+            $date = new DateTime($this->created_on);
+            return $date->format('d-m-Y H:i:s');
+        }
         return $this->created_on;
     }
 
     public function setUpdated_on($value) {
-        
+
         $this->updated_on = $value;
     }
 
-    public function getUpdated_on() {
+    public function getUpdated_on($ptbrFormat = true) {
+         if (null === $this->updated_on) {
+            return date('Y-m-d H:i:s');
+        }
+        
+        if ($ptbrFormat) {
+            $date = new DateTime($this->updated_on);
+            return $date->format('d-m-Y H:i:s');
+        }
 
-        return date('Y-m-d H:i:s');
+        return $this->updated_on;
     }
 
     public function setIdentifier($value) {

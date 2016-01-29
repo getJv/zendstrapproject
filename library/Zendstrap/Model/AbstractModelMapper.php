@@ -61,36 +61,45 @@ abstract class Zendstrap_Model_AbstractModelMapper {
     }
 
     /**
-     * Retorna um array com todos os registros da base
-     * @param string $modelClassName Nome da class model que deseja consultar. exemplo: Admin_Model_User
-     * @return array de objetos
+     * Retorna um array com todos os registros da base dentro de um arraylist
+     * @param string $object_format transforma cada elemento do Zend_Db_Table_Rowset em uma instancia do proprio tipo de classe
+     * @return array de array|objetos
      */
-    public function fetchAll() {
+    public function fetchAll($object_format = false) {
 
+        $recordset = $this->getDbTable()->fetchAll();
         $arr = array();
+        if ($object_format) {
 
-        $rs = $this->getDbTable()->fetchAll();
-        foreach ($rs as $entry) {
-            $arr[] = $this->getModelClass($entry->toArray());
+            foreach ($recordset as $entry) {
+                $arr[] = $this->getModelClass($entry->toArray());
+            }
+            return $arr;
+        } else {
+
+            foreach ($recordset as $entry) {
+                $arr[] = $entry->toArray();
+            }
+            return $arr;
         }
-
-        return $arr;
     }
+
     /**
      * Retorna um registro conforme o id informado
      * @param string $id valor de chave primaria a ser consultado na entidade da base de dados
      * @return object Retorna um objeto em caso de sucesso e null em caso de falha
      */
     public function find($id) {
-        
+
         $result = $this->getDbTable()->find($id);
-         
+
         if (0 == count($result)) {
             return null;
         }
-       
+
         return $this->getModelClass($result->current()->toArray());
     }
+
     /**
      * Realiza o INSERT ou UPDATE do objeto recebido.</br>
      * IMPORTANTE: O primeiro atributo do beanModel deve ser o campo id(PK) da entidade.</br>
@@ -98,29 +107,24 @@ abstract class Zendstrap_Model_AbstractModelMapper {
      * @param Zendstrap_Model_AbstractModel $obj
      * @throws Exception
      */
-    public  function save($obj){ 
-        
+    public function save($obj) {
+
         if (!( $obj instanceof Zendstrap_Model_AbstractModel)) {
 
-            throw new Exception("A classe ".  get_class($obj)." não é instancia de Zendstrap_Model_AbstractModel");
+            throw new Exception("A classe " . get_class($obj) . " não é instancia de Zendstrap_Model_AbstractModel");
         }
-        
+
         $arrData = $obj->toArray();
-        
-        if ( null === $obj->getId() || "" == $obj->getId() ) {
-            
+
+        if (null === $obj->getId() || "" == $obj->getId()) {
+
             array_shift($arrData); #retiro o primeiro registro(PK) para não dar ero de insert
             $this->getDbTable()->insert($arrData);
         } else {
-            
+
             $keys = array_keys($arrData);
-            $this->getDbTable()->update($arrData, array($keys[0].'= ?' => $obj->getId()));
-        
-            
+            $this->getDbTable()->update($arrData, array($keys[0] . '= ?' => $obj->getId()));
         }
-        
-        
     }
 
-       
 }

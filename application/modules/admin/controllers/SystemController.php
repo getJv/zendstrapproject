@@ -9,11 +9,18 @@ class Admin_SystemController extends Zendstrap_Controller_Action {
     public function indexAction() {
 
         $mapper = new Admin_Model_SystemMapper();
-       // $this->view->entries = $mapper->fetchAll();
         
-        $this->view->paginator = $this->getPaginator($mapper->fetchAll()
-     					,$this->getRequest ()->getParam ( 'page' )
-     					,$this->getRequest ()->getParam ( 'per_page' ));
+        
+        $actions = array();
+        $actions[] = "<a href='#'>[Cadastrar]</a>";
+        $actions[] = "<a href='#'>[Editar]</a>";
+    
+    
+    
+     $this->view->datagrid = new Zendstrap_scripts_DataGridUtils(Admin_Model_DbTable_System::$columnCustomNames,$mapper->fetchAll(),$actions,true); 
+//        $this->view->paginator = $this->getPaginator($mapper->fetchAll()
+//     					,$this->getRequest ()->getParam ( 'page' )
+//     					,$this->getRequest ()->getParam ( 'per_page' ));
         
         
     }
