@@ -27,6 +27,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         
         $this->aclSetup = new Zendstrap_Acl_Setup();
     }
+   
 
     /**
      * Inicializa os plugins utilizados na aplicação

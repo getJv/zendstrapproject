@@ -16,7 +16,7 @@ class Zendstrap_View_Helper_FlashMessages extends Zend_View_Helper_Abstract {
         #Imprime mensagens para a pagina atual. sem redirecionamento
         if ($currentMessages)
             $messages = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getCurrentMessages();
-
+//Jdebug($messages);
         $output = '';
 
         if (!empty($messages)) {
@@ -25,7 +25,7 @@ class Zendstrap_View_Helper_FlashMessages extends Zend_View_Helper_Abstract {
             $successMessages = "";
             $errorMessages = "";
             foreach ($messages as $message) {
-                //Jdebug($message);
+                
                 
                 switch ((string) key($message)) {
                     case 'info':

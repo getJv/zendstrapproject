@@ -15,6 +15,7 @@ class Zendstrap_Controller_Action extends Zend_Controller_Action {
 
     public function init() {
         parent::init();
+        
         #Captura as informações do usuário autenticado.
         //$this->_user = Zend_Auth::getInstance()->getIdentity();
         $this->_redirector = $this->_helper->getHelper('Redirector');
