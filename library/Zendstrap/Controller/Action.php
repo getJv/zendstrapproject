@@ -22,6 +22,7 @@ class Zendstrap_Controller_Action extends Zend_Controller_Action {
         //$this->view->usuario = $this->_user;
         #Inicia o helper de mensagens
         $this->_flashMessenger = $this->_helper->getHelper('FlashMessenger');
+        if(is_null($this->_flashMessenger)){throw new Exception('o flashMessenger da Zendstrap Action não foi inicializado corretamente.');}    
     }
 
     /**
@@ -53,7 +54,7 @@ class Zendstrap_Controller_Action extends Zend_Controller_Action {
      * @param string $messageText
      */
     protected function addWarnMessage($messageText) {
-
+        
         $this->_flashMessenger->addMessage(array('warn' => $messageText));
     }
 

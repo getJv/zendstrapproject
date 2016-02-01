@@ -25,6 +25,8 @@ class Zendstrap_View_Helper_FlashMessages extends Zend_View_Helper_Abstract {
             $successMessages = "";
             $errorMessages = "";
             foreach ($messages as $message) {
+                //Jdebug($message);
+                
                 switch ((string) key($message)) {
                     case 'info':
                         $infoMessages .= "<li >{$message[key($message)]}</li>";
