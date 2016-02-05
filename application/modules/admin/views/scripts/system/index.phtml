@@ -1,11 +1,10 @@
+<?php echo $this->flashMessages(false); ?> 
 
-<?php echo $this->flashMessages(); ?> 
-
-
-<p><a role ='button' href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'system', 'action' => 'add'), null, true); ?>">Novo</a></p>
+<p><a class="btn btn-success btn-sm" role="button" href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'system', 'action' => 'add'), null, true); ?>">Inserir novo Sistema</a></p>
 
 
 
+<<<<<<< HEAD
 <?php if (isset($this->datagrid)): ?>
 
     <?php echo $this->datagrid; ?>

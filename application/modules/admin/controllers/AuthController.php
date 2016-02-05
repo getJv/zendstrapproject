@@ -1,9 +1,9 @@
 <?php
 
-class Admin_AuthController extends Zend_Controller_Action {
+class Admin_AuthController extends Zendstrap_Controller_Action {
 
     public function init() {
-        /* Initialize action controller here */
+        parent::init();
     }
 
     public function indexAction() {
@@ -39,8 +39,8 @@ class Admin_AuthController extends Zend_Controller_Action {
             $senha = $form->getValue('senha');
             Admin_Model_Auth::login($login, $senha);
             return $this->_helper->redirector->goToRoute(array('controller' => 'index','module'=>'default'), null, true);
-        } catch (Exception $exc) {
-            //$this->_helper->FlashMessenger($e->getMessage());
+        } catch (Exception $e) {
+            $this->addWarnMessage($e->getMessage());
             /* Criar uma exception propri para dados inváçidos, para aproveitar corretamete o form populate */
             $form->populate($data);
             
