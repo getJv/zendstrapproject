@@ -36,7 +36,7 @@ $container = $menu->getContainer();
                     <?php
                     foreach ($container as $page):
                         $customProperties = $page->getCustomProperties();
-                        $active = ($page->isActive()) ? 'active' : '';
+                        $active = ($page->isActive()) ? 'active' : ''; //verifica a pagina/opção atualmente ativa
                         $hasSubpages = ($page->hasPages()) ? true : false;
                         if ($hasSubpages) {
                             ?>

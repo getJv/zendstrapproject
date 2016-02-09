@@ -1112,7 +1112,7 @@ class Zend_Gdata_Gapps extends Zend_Gdata
      */
     public function retrieveNicknames($username) {
         $query = $this->newNicknameQuery();
-        $query->setUsername($username);
+        $query->setLogin($username);
         $nicknameFeed = $this->retrieveAllEntriesForFeed(
             $this->getNicknameFeed($query));
         return $nicknameFeed;

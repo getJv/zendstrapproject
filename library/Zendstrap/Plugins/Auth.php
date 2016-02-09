@@ -67,17 +67,20 @@ class Zendstrap_Plugins_Auth extends Zend_Controller_Plugin_Abstract
         $controller = "";
         $action     = "";
         $module     = "";
-       // Jdebug($request);
+        
+        //Jdebug($this->_auth->getIdentity());
         if ( !$this->_auth->hasIdentity() && !$this->_isDefaultModule($request) ) {
             $controller = $this->_notLoggedRoute['controller'];
             $action     = $this->_notLoggedRoute['action'];
             $module     = $this->_notLoggedRoute['module'];
         } else if ( !$this->_isAuthorized($request->getControllerName(),
                     $request->getActionName()) && !$this->_isDefaultModule($request) ) { 
+            //Jdebug($this->_auth->clearIdentity(),'sc');
             $controller = $this->_forbiddenRoute['controller'];
             $action     = $this->_forbiddenRoute['action'];
             $module     = $this->_forbiddenRoute['module'];
         } else {
+        
             $controller = $request->getControllerName();
             $action     = $request->getActionName();
             $module     = $request->getModuleName();
@@ -93,8 +96,9 @@ class Zendstrap_Plugins_Auth extends Zend_Controller_Plugin_Abstract
     {
         $this->_acl = Zend_Registry::get('acl');
         $user = $this->_auth->getIdentity();
-        
-        if ( !$this->_acl->has( $controller ) || !$this->_acl->isAllowed( $user, $controller, $action ) ){
+        $role = (empty($user))?null:$user->getRoleId();
+        //Jdebug($this->_auth->clearIdentity());
+        if ( !$this->_acl->has( $controller ) || !$this->_acl->isAllowed( $role, $controller, $action ) ){
             return false;
         } return true;
     }

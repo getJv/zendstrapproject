@@ -55,7 +55,9 @@ class ErrorController extends Zend_Controller_Action
 
     public function forbiddenAction()
     {
-        // action body
+        $auth = Zend_Auth::getInstance();
+        $s = $auth->getIdentity();
+        $this->view->user = $s;
     }
 
 

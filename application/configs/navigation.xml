@@ -34,13 +34,16 @@
                         <label>Sistemas</label>
                         <uri>/ZendstrapProject/admin/system</uri>
                     </page1_3>
+                    
+                    
 
                 </pages>
             </page1>
             
             <page2>
                 <label>Login</label>
-                <controller>admin</controller>
+                <module>admin</module>
+                <controller>auth</controller>
                 <action>login</action>
                  
 
